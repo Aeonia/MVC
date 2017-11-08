@@ -9,7 +9,7 @@
     <h1><?php echo $todo['title']; ?></h1>
     <p><?php echo $todo['description']; ?></p>
 
-    <form action="read.php" method="post">
+    <form action="" method="post">
       <div>
         <label>
           titre :

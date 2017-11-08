@@ -67,14 +67,14 @@ function addOne($title, $description) {
 	$pdo_statement = prepareStatement('INSERT INTO todos (title, description)' .
   		'VALUES (:title, :description)');
 
-	if (isset($title, $description)) {
+	if (//isset($title, $description)) {
 	  $pdo_statement &&
 	  $pdo_statement->bindParam(':title', $title)&&
 	  $pdo_statement->bindParam(':description', $description) &&
 	  $pdo_statement->execute()
-	 
+	 ) {
 	  header('Location:index.php');
 	  exit;
-        
+      }  
 }
       
