@@ -14,7 +14,7 @@
       <li>
         <a href="read.php?id=<?php echo $ligne['id']; ?>">
           <?php echo $ligne['title']; ?>
-          <p><?php echo $fetchD['art_content'] ?></p>
+          <p><?php echo $todos['art_content'] ?></p>
         </a>
       </li>
     <?php

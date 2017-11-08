@@ -16,7 +16,7 @@ function initDatabase() {
 	return $pdo;
 }
 function prepareStatement($sql) {
-  	$pdo_statement = null;
+	$pdo_statement = null;
 
   	$pdo = initDatabase();
 
@@ -32,7 +32,7 @@ function prepareStatement($sql) {
 }
 
 //from index
-function fetchData() {
+function getAll() {
 	$todos = [];
 
 	$pdo_statement = prepareStatement('SELECT * FROM todos WHERE deleted_at IS NULL');
@@ -43,3 +43,38 @@ function fetchData() {
 
 	return $todos;
 }
+
+function getOne($id) {
+	$todo = null;
+
+    $pdo_statement = prepareStatement('SELECT * FROM todos WHERE id=:id');
+
+        if (
+          $pdo_statement &&
+          $pdo_statement->bindParam(':id', $id, PDO::PARAM_INT) &&
+          $pdo_statement->execute()
+        ) {
+          $todo = $pdo_statement->fetch(PDO::FETCH_ASSOC);
+        }
+    return $todo;
+}
+
+
+function addOne($title, $description) {
+	  
+
+	//if(isset($title, $description)) {
+	$pdo_statement = prepareStatement('INSERT INTO todos (title, description)' .
+  		'VALUES (:title, :description)');
+
+	if (isset($title, $description)) {
+	  $pdo_statement &&
+	  $pdo_statement->bindParam(':title', $title)&&
+	  $pdo_statement->bindParam(':description', $description) &&
+	  $pdo_statement->execute()
+	 
+	  header('Location:index.php');
+	  exit;
+        
+}
+      

@@ -2,6 +2,6 @@
 
 require __DIR__.'/Model/model.php';
 
-$todos = fetchData();
+$todos = getAll();
 
 require __DIR__.'/View/view.php';
